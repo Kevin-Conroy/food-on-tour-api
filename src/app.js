@@ -110,7 +110,7 @@ app.post("/createprofile", (req, res) => {
   res.status(200).send()
 })
 
-app.patch("/editprofile", (req, res) => {
+app.post("/editprofile", (req, res) => {
   res.status(200).send()
 })
 
