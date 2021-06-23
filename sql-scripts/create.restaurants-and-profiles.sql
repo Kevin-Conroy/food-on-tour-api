@@ -10,7 +10,9 @@ CREATE TABLE IF NOT EXISTS profiles (
 
 CREATE TABLE IF NOT EXISTS restaurants (
  id INTEGER,
+ name TEXT NOT NULL,
  city TEXT NOT NULL,
  state TEXT NOT NULL,
+ url VARCHAR,
  price VARCHAR
 );
