@@ -6,9 +6,6 @@ const ProfilesService = {
   getById(knex, id) {
     return knex.from("profiles").select("*").where("id", id).first();
   },
-  getByLogin(knex, username, password) {
-    return knex.from("profiles").select("*").where("username", username).andWhere("password", password).first();
-  },
   insertProfile(knex, newProfile) {
     return knex
       .insert(newProfile)
@@ -21,7 +18,7 @@ const ProfilesService = {
   deleteProfile(knex, id) {
     return knex("profiles").where({ id }).delete();
   },
-  updateProfile(knex, id, newProfileFields) {
+  updateBookmark(knex, id, newProfileFields) {
     return knex("profiles").where({ id }).update(newProfileFields);
   },
 };

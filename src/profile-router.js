@@ -92,53 +92,21 @@ profileRouter.route("/profile/:profile_id").get((req, res, next) => {
         error: { message: `Profile not found` },
       });
     }
-    res.json(serializeProfile(profile));
+    res.json(serializeProfile(profile)).catch(next);
   });
-
-  profileRouter
-    .route("/editprofile/:profile_id")
-    .patch(bodyParser, (req, res, next) => {
-      const { first_name, last_name, bandname, bio, pic_url } = req.body;
-      const profileToUpdate = { first_name, last_name, bandname, bio };
-
-      if (!first_name && !last_name && !bandname && !bio && !pic_url) {
-        return res.status(400).json({
-          error: {
-            message: `Please choose a field to edit`,
-          },
-        });
-      }
-
-      ProfilesService.updateProfile(
-        req.app.get("db"),
-        req.params.profile_id,
-        profileToUpdate
-      )
-        .then(() => {
-          res.status(204).end();
-        })
-        .catch(next);
-    });
-});
-
-profileRouter.route("/login/:username/:password").get((req, res, next) => {
-  const { username, password } = req.params;
-  ProfilesService.getByLogin(req.app.get("db"), username, password).then(
-    (profile) => {
-      if (!profile) {
-        return res.status(404).json({
-          error: { message: `Username or password are incorrect` },
-        });
-      }
-      res.json(serializeProfile(profile)).catch(next);
-    }
-  );
 });
 
 profileRouter.route("/profile").get((req, res) => {
   res.status(200).send("Here is the logged in user");
 });
 
+profileRouter.route("/createprofile").post(bodyParser, (req, res) => {
+  res.status(200).send("Here is the create profile page");
+});
+
+//change to post
+profileRouter.route("/editprofile").get((req, res) => {
+  res.status(200).send("Here is the edit profile page");
+});
 
 module.exports = profileRouter;
-

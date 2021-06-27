@@ -6,11 +6,8 @@ const knex = require("knex");
 const app = require("./app");
 const { PORT, DB_URL } = require('./config');
 
-//import DATABASE_URL from config.js
-
 const knexInstance = knex({
   client: 'pg',
-//connection: DATABASE_URL 
   connection: process.env.DB_URL
 })
 

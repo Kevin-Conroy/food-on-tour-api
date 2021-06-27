@@ -13,7 +13,7 @@ const RestaurantsService = {
 
   insertRestaurant(knex, newRestaurant) {
     return knex
-      .insert(newRestaurant, "id")
+      .insert(newRestaurant)
       .into("restaurants")
       .returning("*")
       .then((rows) => {
