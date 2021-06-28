@@ -11,7 +11,7 @@
     "dev": "nodemon src/server.js",
     "start": "nodemon src/server.js",
     "predeploy": "npm audit",
-    "deploy": "git push heroku main",
+    "deploy": "git push heroku master",
     "postdeploy": "npm run migrate:production"
   },
   "keywords": [],
