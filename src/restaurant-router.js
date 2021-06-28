@@ -1,5 +1,6 @@
 const express = require("express");
 const RestaurantsService = require("./restaurants-service");
+const RecommendationsService = require("./recommendations-service");
 const restaurantRouter = express.Router();
 //const bodyParser = require('body-parser');
 const app = require("./app");
@@ -7,7 +8,6 @@ const app = require("./app");
 
 const bodyParser = express.json();
 restaurantRouter.use(bodyParser);
-var xxx;
 
 const serializeRestaurant = (restaurant) => ({
   id: restaurant.id,
@@ -123,10 +123,6 @@ restaurantRouter
           newRestaurant
         );
 
-        /*xxx = restaurant.then((aNewRestaurant) => {
-          return aNewRestaurant;
-        });
-        */
         restaurant.catch((err) => {
           console.log("Caught an error");
         });
@@ -142,17 +138,34 @@ restaurantRouter
 
           var recommend = RestaurantsService.insertRecommendation(
             req.app.get("db"),
-            newRecommendation
+            newRecommendation,
+            console.log(newRecommendation)
           ).then((aNewRecommendation) => {
             res.json(aNewRecommendation);
           });
         }
       );
+
       //console.log(recommend);
       //console.log(newRecommendation);
       //res.json(serializeRecommendation(recommend)).catch(err => {console.log("Caught an error")});
-      res.json("Done");
+      //res.json("Done");
     });
+  });
+
+restaurantRouter
+  .route("/deleterecommendation/:recommendation_id")
+  .delete((req, res, next) => {
+    const { recommendation_id } = req.params;
+    RecommendationsService.deleteRecommendation(
+      req.app.get("db"),
+      recommendation_id
+    )
+    .then(() => {
+      res.status(204).end()
+    })
+    .catch(next);
+     
   });
 
 module.exports = restaurantRouter;

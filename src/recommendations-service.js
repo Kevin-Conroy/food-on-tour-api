@@ -20,12 +20,13 @@ const RecommendationsService = {
           return rows[0];
         });
     },
-    deleteRestaurant(knex, id) {
-      return knex("restaurant").where({ id }).delete();
+    deleteRecommendation(knex, id) {
+      return knex("recommendations").where({ id }).delete();
     },
-    updateRestaurant(knex, id, newRestaurantFields) {
+
+    updateRecommendation(knex, id, newRestaurantFields) {
       return knex("restaurants").where({ id }).update(newRestaurantFields);
     },
   };
   
-  module.exports = RestaurantsService;
+  module.exports = RecommendationsService;

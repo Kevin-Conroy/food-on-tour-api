@@ -35,6 +35,7 @@ const RestaurantsService = {
         return rows[0];
       });
   },
+  
 };
 
 module.exports = RestaurantsService;
