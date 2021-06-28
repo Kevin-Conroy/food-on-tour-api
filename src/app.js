@@ -18,7 +18,7 @@ app.use(profileRouter);
 app.use(express.json());
 
 console.log('knex and driver installed correctly');
-console.log(process.env.DB_URL)
+console.log(process.env.DATABASE_URL)
 
 app.get("/", (req, res) => {
   res.status(200).send("Here is the welcome page");

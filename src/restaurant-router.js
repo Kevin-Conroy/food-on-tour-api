@@ -136,7 +136,7 @@ restaurantRouter
             user_id: user_id,
           };
 
-          var recommend = RestaurantsService.insertRecommendation(
+          const recommend = RestaurantsService.insertRecommendation(
             req.app.get("db"),
             newRecommendation,
             console.log(newRecommendation)
@@ -145,11 +145,6 @@ restaurantRouter
           });
         }
       );
-
-      //console.log(recommend);
-      //console.log(newRecommendation);
-      //res.json(serializeRecommendation(recommend)).catch(err => {console.log("Caught an error")});
-      //res.json("Done");
     });
   });
 
@@ -161,11 +156,14 @@ restaurantRouter
       req.app.get("db"),
       recommendation_id
     )
-    .then(() => {
-      res.status(204).end()
-    })
-    .catch(next);
-     
+      .then(() => {
+        res
+          .send(`Recommendation with id ${recommendation_id} deleted`)
+          .status(204)
+
+          .end();
+      })
+      .catch(next);
   });
 
 module.exports = restaurantRouter;

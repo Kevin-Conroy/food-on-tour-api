@@ -4,16 +4,16 @@ const profileRouter = require("./profile-router");
 const restaurantRouter = require("./restaurant-router");
 const knex = require("knex");
 const app = require("./app");
-const { PORT, DB_URL } = require('./config');
+const { PORT, DATABASE_URL } = require('./config');
 
 const knexInstance = knex({
   client: 'pg',
-  connection: process.env.DB_URL
+  connection: process.env.DATABASE_URL
 })
 
 const db = knex({
   client: 'pg',
-  connection: DB_URL,
+  connection: DATABASE_URL,
 })
 
 app.set('db', db)
