@@ -21,11 +21,11 @@ CREATE TABLE IF NOT EXISTS recommendations (
   id SERIAL,
   user_id INTEGER,
   restaurant_id INTEGER
-)
+);
 
 CREATE TABLE IF NOT EXISTS bucket_list (
   id SERIAL,
   user_id INTEGER,
   restaurant_id INTEGER
-)
+);
 
