@@ -11,7 +11,7 @@ const ProfilesService = {
     try{
     return knex
       //.insert(newProfile)
-      .insert({first_name: newProfile.first_name, last_name: newProfile.last_name, username: newProfile.username, bandname: newProfile.bandname, bio: newProfile.bio, pic_url: newProfile.pic_url })
+      .insert({id: newProfile.id, first_name: newProfile.first_name, last_name: newProfile.last_name, username: newProfile.username, bandname: newProfile.bandname, bio: newProfile.bio, pic_url: newProfile.pic_url })
       .into("profiles")
       //heroku logs -t -a food-on-tour-api
 
