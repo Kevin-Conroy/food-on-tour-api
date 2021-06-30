@@ -15,7 +15,9 @@ const ProfilesService = {
       .raw("SELECT * FROM profiles")
       //.returning("*")
       .then((rows) => {
-        return rows[0];
+       // return rows[0];
+       console.log("In the then block");
+       return "x";
       });
     } catch(err)
   {console.log("Caught an error " + err)}
