@@ -73,9 +73,9 @@ profileRouter
       first_name: firstName,
       last_name: lastName,
       username: userName,
-      password,
-      bandname,
-      bio,
+      password: password,
+      bandname: bandname,
+      bio: bio
     };
 console.log("Line 80 test");
     ProfilesService.insertProfile(req.app.get("db"), newProfile)
