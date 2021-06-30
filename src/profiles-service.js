@@ -10,10 +10,10 @@ const ProfilesService = {
     console.log("Profile service test" + JSON.stringify(newProfile));
     try{
     return knex
-     // .insert(newProfile)
-     // .into("profiles")
-      .raw("INSERT INTO profiles (first_name, last_name, username, bandname, bio, pic_url) VALUES ('Kahaleel', 'Nitti', 'user1', 'Automated', 'Front-line multi-state contingency', 'https://www.fillmurray.com/200/300')")
-      //.returning("*")
+      .insert(newProfile)
+      .into("profiles")
+      //.raw("INSERT INTO profiles (first_name, last_name, username, bandname, bio, pic_url) VALUES ('Kahaleel', 'Nitti', 'user1', 'Automated', 'Front-line multi-state contingency', 'https://www.fillmurray.com/200/300')")
+      .returning("*")
       .then((rows) => {
        // return rows[0];
        console.log("In the then block" + JSON.stringify(rows));
