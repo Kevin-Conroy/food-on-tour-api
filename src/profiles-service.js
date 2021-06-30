@@ -13,7 +13,7 @@ const ProfilesService = {
      // .insert(newProfile)
      // .into("profiles")
       .raw("SELECT * FROM profiles")
-      .returning("*")
+      //.returning("*")
       .then((rows) => {
         return rows[0];
       });
