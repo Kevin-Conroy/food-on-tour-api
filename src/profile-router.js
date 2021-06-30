@@ -57,12 +57,15 @@ profileRouter
   .post(bodyParser, (req, res, next) => {
     console.log("In the program");
     for (const field of ["firstName", "lastName", "userName"]) {
+      console.log("In the for loop");
       if (!req.body[field]) {
         return res.status(400).send({
           error: { message: `'${field}' is required` },
         });
       }
     }
+    console.log("Line 67 test");
+
 
     const { firstName, lastName, userName, password, bandname, bio } = req.body;
 
@@ -74,7 +77,7 @@ profileRouter
       bandname,
       bio,
     };
-
+console.log("Line 80 test");
     ProfilesService.insertProfile(req.app.get("db"), newProfile)
       .then((profile) => {
         res
