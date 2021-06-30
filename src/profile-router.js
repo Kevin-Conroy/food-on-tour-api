@@ -55,6 +55,7 @@ profileRouter
       .catch(next);
   })
   .post(bodyParser, (req, res, next) => {
+    console.log("In the program");
     for (const field of ["firstName", "lastName", "userName"]) {
       if (!req.body[field]) {
         return res.status(400).send({
