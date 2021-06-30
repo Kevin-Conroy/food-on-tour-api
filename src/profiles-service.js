@@ -7,7 +7,7 @@ const ProfilesService = {
     return knex.from("profiles").select("*").where("id", id).first();
   },
   insertProfile(knex, newProfile) {
-    console.log("Profile service test" + newProfile);
+    console.log("Profile service test" + JSON.stringify(newProfile));
     try{
     return knex
       .insert(newProfile)
