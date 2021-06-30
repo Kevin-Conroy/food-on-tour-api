@@ -29,7 +29,6 @@ CREATE TABLE IF NOT EXISTS bucket_list (
   restaurant_id INTEGER
 );
 
-BEGIN;
 
 INSERT INTO profiles (first_name, last_name, username, bandname, bio, pic_url)
 VALUES ('Kahaleel', 'Nitti', 'user1', 'Automated', 'Front-line multi-state contingency', 'https://www.fillmurray.com/200/300'),
@@ -42,5 +41,5 @@ VALUES ('Dynabox', 'Aurora', 'Colorado', 'https://google.com', '$'),
 ('Teklist', 'Paterson', 'New Jersey', 'https://yelp.com', '$$'),
 ('Oyope', 'Hartford', 'Connecticut', 'https://weather.com', '$$$$');
 
-COMMIT;
+
 
