@@ -10,8 +10,9 @@ const ProfilesService = {
     console.log("Profile service test" + JSON.stringify(newProfile));
     try{
     return knex
-      .insert(newProfile)
-      .into("profiles")
+     // .insert(newProfile)
+     // .into("profiles")
+      .raw("SELECT * FROM profiles")
       .returning("*")
       .then((rows) => {
         return rows[0];
