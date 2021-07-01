@@ -26,7 +26,7 @@ const ProfilesService = {
   deleteProfile(knex, id) {
     return knex("profiles").where({ id }).delete();
   },
-  updateBookmark(knex, id, newProfileFields) {
+  updateProfile(knex, id, newProfileFields) {
     return knex("profiles").where({ id }).update(newProfileFields);
   },
 };
