@@ -68,11 +68,31 @@ profileRouter.route("/profile/:profile_id").get((req, res, next) => {
     }
     res.json(serializeProfile(profile)).catch(next);
   });
-})
-.delete((req, res, next) => {
+}).patch(bodyParser, (req, res, next) => {
+  const { first_name, last_name, username, bandname, bio } = req.body
+  const profileToUpdate = { first_name, last_name, username, bandname, bio }
+
+  if (!first_name && !last_name && !bandname && !bio) {
+    return res.status(400).json({
+      error: {
+        message: `Please select a field to update`
+      }
+    })
+  }
+  ProfilesService.updateProfile (
+  req.app.get('db'),
+			req.params.profile_id,
+			profileToUpdate
+		)
+			.then(() => {
+				res.send(`Profile with id ${profile_id} updated`).status(204).end()
+			})
+			.catch(next)
+	})
+  .delete((req, res, next) => {
   ProfilesService.deleteProfile(req.app.get('db'), req.params.profile_id)
     .then(() => {
-      res.status(204).end()
+      res.send(`Profile with id ${profile_id} deleted`).status(204).end()
     })
     .catch(next)
 })

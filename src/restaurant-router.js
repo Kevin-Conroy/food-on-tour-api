@@ -45,22 +45,7 @@ restaurantRouter
     }
 
     const { name, city, state, url, price } = req.body;
-    /*
-    const newRestaurant = {
-      id,
-      name,
-      city,
-      state,
-      url,
-      price,
-    };
-
-    const newRecommendation = {
-      id,
-      user_id,
-      restaurant_id,
-    };
-*/
+    
     RestaurantsService.insertRestaurant(req.app.get("db"), newRestaurant)
       .then((restaurant) => {
         res
