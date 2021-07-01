@@ -22,7 +22,7 @@ const ProfilesService = {
   deleteProfile(knex, id) {
     return knex("profiles").where({ id }).delete();
   },
-  updateProfile(knex, id, newProfileFields) {
+  updateProfile(knex, id, profileToUpdate) {
     return knex("profiles").where({ id }).update({id: profileToUpdate.id, first_name:profileToUpdate.first_name, last_name: profileToUpdate.last_name, username: profileToUpdate.username, bandname: profileToUpdate.bandname, bio: profileToUpdate.bio });
   },
 };
