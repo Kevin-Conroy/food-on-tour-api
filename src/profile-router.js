@@ -90,7 +90,7 @@ profileRouter.route("/profile/:profile_id").get((req, res, next) => {
         console.log("Line 90 in profile router" + profile_id + " " + JSON.stringify(profile));
 				res.send(`Profile with id ${req.params.profile_id} updated`).status(204).end()
 			})
-			.catch(next)
+			//.catch(next)
 	})
   .delete((req, res, next) => {
   ProfilesService.deleteProfile(req.app.get('db'), req.params.profile_id)
