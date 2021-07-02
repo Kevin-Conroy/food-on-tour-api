@@ -74,7 +74,7 @@ profileRouter.route("/profile/:profile_id").get((req, res, next) => {
   const { first_name, last_name, username, bandname, bio } = req.body
   const profileToUpdate = { first_name: first_name, last_name: last_name, username: username, bandname: bandname, bio: bio }
 
-  if (!first_name && !last_name && !username && !bandname && !bio) {
+  if (!first_name || !last_name || !username || !bandname || !bio) {
     return res.status(400).json({
       error: {
         message: `Please select a field to update`
