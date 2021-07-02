@@ -85,14 +85,14 @@ profileRouter.route("/profile/:profile_id").get((req, res, next) => {
 			profileToUpdate
 		)
 			.then(() => {
-				return res.send(`Profile with id ${profile_id} updated`).status(204).end()
+				res.send(`Profile with id ${profile_id} updated`).status(204).end()
 			})
 			.catch(next)
 	})
   .delete((req, res, next) => {
   ProfilesService.deleteProfile(req.app.get('db'), req.params.profile_id)
     .then(() => {
-      return res.send(`Profile with id ${profile_id} deleted`).status(204).end()
+      res.send(`Profile with id ${profile_id} deleted`).status(204).end()
     })
     .catch(next)
 })
