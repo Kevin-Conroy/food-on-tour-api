@@ -171,7 +171,7 @@ restaurantRouter.route("/bucketlist/:profile_id").post((req, res, next) => {
 
   RestaurantsService.insertBucketListItem(req.app.get("db"), newBucketListItem)
     .then((newBucketListItem) => {
-      res.send(`Bucket list added to profile ${profile_id}`).status(201).end();
+      res.send(`Bucket list added to profile ${user_id}`).status(201).end();
     })
     .catch(next);
 });
