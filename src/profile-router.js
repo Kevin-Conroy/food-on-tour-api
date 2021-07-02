@@ -47,9 +47,11 @@ profileRouter
       bandname: bandname,
       bio: bio
     };
+    
 console.log("Line 80 test");
     ProfilesService.insertProfile(req.app.get("db"), newProfile)
       .then((profile) => {
+        console.log("Passed line 52 then");
         res
           .status(201)
           .location(`/profiles/${profile.id}`)
