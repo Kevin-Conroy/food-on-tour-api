@@ -46,9 +46,7 @@ restaurantRouter
 
     const { name, city, state, url, price } = req.body;
 
-    RestaurantsService.insertRestaurant(req.app.get("db"), newRestaurant);
-    console
-      .log(JSON.stringify(newRestuarant))
+    RestaurantsService.insertRestaurant(req.app.get("db"), newRestaurant)
       .then((restaurant) => {
         res
           .status(201)
