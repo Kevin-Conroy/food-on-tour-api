@@ -87,7 +87,7 @@ profileRouter.route("/profile/:profile_id").get((req, res, next) => {
 			profileToUpdate
 		)
 			.then((profile) => {
-        console.log("Line 90 in profile router" + profile_id + " " + JSON.stringify(profile));
+        console.log("Line 90 in profile router " + JSON.stringify(profile));
 				res.send(`Profile with id ${req.params.profile_id} updated`).status(204).end()
 			})
 			//.catch(next)
