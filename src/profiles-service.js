@@ -33,7 +33,7 @@ const ProfilesService = {
       bio: profileToUpdate.bio })
       .then((rows) => {
         console.log("Got to the end of updateProfile " + JSON.stringify(rows));
-        return rows;
+        return "Done";
 
       });
       
