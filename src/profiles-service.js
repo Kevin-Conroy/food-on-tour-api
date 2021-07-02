@@ -32,8 +32,8 @@ const ProfilesService = {
       bandname: profileToUpdate.bandname, 
       bio: profileToUpdate.bio })
       .then((rows) => {
-        console.log("Got to the end of updateProfile" + JSON.stringify(rows));
-        return id;
+        console.log("Got to the end of updateProfile " + JSON.stringify(rows));
+        return rows;
 
       });
       
