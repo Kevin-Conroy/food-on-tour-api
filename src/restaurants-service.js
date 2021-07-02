@@ -12,11 +12,13 @@ const RestaurantsService = {
   },
 
   insertRestaurant(knex, newRestaurant) {
+    console.log("At insert service");
     return knex
       .insert({ id: newRestaurant.id, name: newRestaurant.name, city: newRestaurant.city, state: newRestaurant.state, url: newRestaurant.url })
       .into("restaurants")
       .returning("*")
       .then((rows) => {
+        console.log("In the service then block");
         return rows[0];
       });
 
