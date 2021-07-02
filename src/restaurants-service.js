@@ -39,6 +39,15 @@ const RestaurantsService = {
         return rows[0];
       });
   },
+  insertBucketListItem(knex, bucketListItem) {
+    return knex
+    .insert({ id: bucketListItem.id, user_id: bucketListItem.profile_id, restaurant_id: bucketListItem.restaurant_id })
+    .into("bucket_list")
+    .returning("*")
+    .then((rows) => {
+      return rows[0];
+    })
+  }
   
 };
 

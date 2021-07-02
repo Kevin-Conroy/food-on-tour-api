@@ -43,7 +43,7 @@ restaurantRouter
         });
       }
     }
-  console.log("At line 46");
+    console.log("At line 46");
     const { name, city, state, url, price } = req.body;
 
     const newRestaurant = {
@@ -51,10 +51,10 @@ restaurantRouter
       city: city,
       state: state,
       url: url,
-      price: price
-     };
-     
-  console.log("At line 48");
+      price: price,
+    };
+
+    console.log("At line 48");
     RestaurantsService.insertRestaurant(req.app.get("db"), newRestaurant)
       .then((restaurant) => {
         console.log("At line 51");
@@ -160,5 +160,18 @@ restaurantRouter
       })
       .catch(next);
   });
+
+restaurantRouter.route("/bucketlist/:profile_id").post((req, res, next) => {
+  const { profile_id, restaurant_id } = req.body;
+  RestaurantsService.insertBucketListItem(req.app.get("db"), profile_id).then(
+    (newBucketListItem) => {
+      const newBucketListItem = {
+        id: newBucketListItem.id,
+        user_id: req.body.profile_id,
+        restaurant_id: newBucketListItem.restaurant_id,
+      };
+    }
+  );
+});
 
 module.exports = restaurantRouter;
