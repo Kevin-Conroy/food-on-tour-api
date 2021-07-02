@@ -45,7 +45,7 @@ restaurantRouter
     }
   console.log("At line 46");
     const { name, city, state, url, price } = req.body;
-
+  console.log("At line 48");
     RestaurantsService.insertRestaurant(req.app.get("db"), newRestaurant)
       .then((restaurant) => {
         console.log("At line 51");
