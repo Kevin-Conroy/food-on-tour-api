@@ -30,7 +30,12 @@ const ProfilesService = {
       last_name: profileToUpdate.last_name, 
       username: profileToUpdate.username, 
       bandname: profileToUpdate.bandname, 
-      bio: profileToUpdate.bio });
+      bio: profileToUpdate.bio })
+      .then((rows) => {
+        console.log("Got to the end of updateProfile");
+        return rows[0];
+      });
+      
   },
 };
 
