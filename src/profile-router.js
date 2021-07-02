@@ -47,7 +47,7 @@ profileRouter
       bandname: bandname,
       bio: bio
     };
-    
+
 console.log("Line 80 test");
     ProfilesService.insertProfile(req.app.get("db"), newProfile)
       .then((profile) => {
@@ -72,7 +72,7 @@ profileRouter.route("/profile/:profile_id").get((req, res, next) => {
   });
 }).patch(bodyParser, (req, res, next) => {
   const { first_name, last_name, username, bandname, bio } = req.body
-  const profileToUpdate = { first_name, last_name, username, bandname, bio }
+  const profileToUpdate = { first_name: first_name, last_name: last_name, username: username, bandname: bandname, bio: bio }
 
   if (!first_name && !last_name && !username && !bandname && !bio) {
     return res.status(400).json({
