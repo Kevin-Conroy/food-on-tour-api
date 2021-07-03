@@ -41,7 +41,7 @@ const RestaurantsService = {
   },
   insertBucketListItem(knex, newBucketListItem) {
     return knex
-    .insert({ id: newBucketListItem.id, user_id: newBucketListItem.profile_id, restaurant_id: newBucketListItem.restaurant_id })
+    .insert({ id: newBucketListItem.id, user_id: newBucketListItem.user_id, restaurant_id: newBucketListItem.restaurant_id })
     .into("bucket_list")
     .returning("*")
     .then((rows) => {
