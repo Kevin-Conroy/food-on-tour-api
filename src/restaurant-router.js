@@ -164,14 +164,13 @@ restaurantRouter
 restaurantRouter.route("/bucketlist/:profile_id").post((req, res, next) => {
   const { profile_id, restaurant_id } = req.body;
   const newBucketListItem = {
-    id: newBucketListItem.id,
     user_id: req.body.profile_id,
     restaurant_id: req.body.restaurant_id,
   };
 
   RestaurantsService.insertBucketListItem(req.app.get("db"), newBucketListItem)
     .then((newBucketListItem) => {
-      res.send(`Bucket list added to profile ${user_id}`).status(201).end();
+      res.send(`Bucket list added to profile ${newBucketListItem.user_id}`).status(201).end();
     })
     .catch(next);
 });
