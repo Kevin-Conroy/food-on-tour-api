@@ -6,9 +6,9 @@ const bodyParser = express.json();
 
 const serializeProfile = (profile) => ({
   id: profile.id,
-  first_name: profile.firstName,
-  last_name: profile.lastName,
-  username: profile.userName,
+  firstName: profile.first_name,
+  lastName: profile.last_name,
+  userName: profile.username,
   password: profile.password,
   bandname: profile.bandname,
   bio: profile.bio,
