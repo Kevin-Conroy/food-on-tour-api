@@ -40,12 +40,12 @@ profileRouter
     const { firstName, lastName, userName, password, bandname, bio } = req.body;
 
     const newProfile = {
-      first_name: this.state.firstName,
-      last_name: this.state.lastName,
-      username: this.state.userName,
-      password: this.state.password,
-      bandname: this.state.bandname,
-      bio: this.state.bio
+      first_name: req.body.firstName,
+      last_name: req.body.lastName,
+      username: req.body.userName,
+      password: req.body.password,
+      bandname: req.body.bandname,
+      bio: req.body.bio
     };
 
 console.log("Line 80 test");
