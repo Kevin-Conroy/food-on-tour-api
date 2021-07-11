@@ -1,7 +1,20 @@
 const ProfilesService = {
-  getAllProfiles(knex) {
-    return knex.select("*").from("profiles");
+
+  async getAllProfiles(knex) {
+    const [profiles, recommendations, bucketList] = await Promise.all([
+      knex.select("*").from("profiles"),
+      knex.select("*").from("recommendations").join("restaurants", "recommendations.restaurant_id", "restaurants.id"),
+      knex.select("*").from("bucket_list").join("restaurants", "bucket_list.restaurant_id", "restaurants.id")
+        
+    ]);
+    return profiles.map(profile => ({
+      ...profile,
+      recommendations: recommendations.filter(rec => rec.user_id === profile.id),
+      bucketList: bucketList.filter(item => item.user_id === profile.id)
+    }));
   },
+
+  
 
   getById(knex, id) {
     return knex.from("profiles").select("*").where("id", id).first();

@@ -2,6 +2,14 @@ const RestaurantsService = {
   getAllRestaurants(knex) {
     return knex.select("*").from("restaurants");
   },
+  
+  getAllRecommendations(knex) {
+  return knex.select("*").from("recommendations").join("restaurants", "recommendations.restaurant_id", "restaurants.id")
+  },
+
+  getAllBucketListItems(knex) {
+   return knex.select("*").from("bucket_list").join("restaurants", "bucket_list.restaurant_id", "restaurants.id")
+  },
 
   getById(knex, id) {
     return knex.from("restaurants").select("*").where("id", id).first();
@@ -22,7 +30,7 @@ const RestaurantsService = {
         return rows[0];
       });
 
-      //.insert({id: newProfile.id, first_name: newProfile.first_name, last_name: newProfile.last_name, username: newProfile.username, bandname: newProfile.bandname, bio: newProfile.bio, pic_url: newProfile.pic_url })
+     
   },
   deleteRestaurant(knex, id) {
     return knex("restaurant").where({ id }).delete();
