@@ -26,6 +26,7 @@
     "express": "^4.17.1",
     "helmet": "^4.4.1",
     "knex": "^0.95.6",
+    "knex-stringcase": "^1.4.5",
     "morgan": "^1.10.0",
     "pg": "^8.6.0",
     "postgrator-cli": "^3.3.0"
