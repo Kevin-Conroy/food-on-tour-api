@@ -103,6 +103,7 @@ restaurantRouter
     const { name, city, state, url, price, user_id } = req.body;
     console.log(req.body);
     RestaurantsService.getByName(req.app.get("db"), name).then((restaurant) => {
+      console.log("Inside get by name service")
       if (!restaurant) {
         //Add Restaurant
         const newRestaurant = {
@@ -122,16 +123,17 @@ restaurantRouter
           console.log("Caught an error");
         });
       }
+      console.log("at line 125")
       RestaurantsService.getByName(req.app.get("db"), name).then(
         (newRestaurant) => {
-          console.log(newRestaurant);
+          console.log("at line 127");
           const newRecommendation = {
             //pass in user_id from function
             restaurant_id: newRestaurant.id,
             user_id: user_id,
           };
 
-          const recommend = RestaurantsService.insertRecommendation(
+          RestaurantsService.insertRecommendation(
             req.app.get("db"),
             newRecommendation,
             console.log(newRecommendation)
