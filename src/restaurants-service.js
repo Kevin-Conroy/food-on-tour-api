@@ -40,7 +40,7 @@ const RestaurantsService = {
   },
   insertRecommendation(knex, newRecommendation) {
     return knex
-      .insert({ id: newRecommendation.id, user_id: newRecommendation.user_id, restaurant_id: newRecommendation.restaurant_id })
+      .insert({ user_id: newRecommendation.user_id, restaurant_id: newRecommendation.restaurant_id })
       .into("recommendations")
       .returning("*")
       .then((rows) => {
