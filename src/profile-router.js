@@ -11,7 +11,8 @@ const serializeProfile = (profile) => ({
   userName: profile.username,
   password: profile.password,
   bandname: profile.bandname,
-  bio: profile.bio,
+  profilePicture: profile.pic_url,
+  bio: profile.bio
 });
 
 profileRouter
@@ -37,7 +38,7 @@ profileRouter
     console.log("Line 67 test");
 
 
-    const { firstName, lastName, userName, password, bandname, bio } = req.body;
+    const { firstName, lastName, userName, password, bandname, bio, profilePicture } = req.body;
 
     const newProfile = {
       first_name: req.body.firstName,
@@ -45,7 +46,8 @@ profileRouter
       username: req.body.userName,
       password: req.body.password,
       bandname: req.body.bandname,
-      bio: req.body.bio
+      bio: req.body.bio,
+      pic_url: req.body.profilePicture
     };
 
 console.log("Line 80 test");
@@ -71,8 +73,8 @@ profileRouter.route("/profile/:profile_id").get((req, res, next) => {
     res.json(serializeProfile(profile)).catch(next);
   });
 }).patch(bodyParser, (req, res, next) => {
-  const { first_name, last_name, username, bandname, bio } = req.body
-  const profileToUpdate = { first_name: first_name, last_name: last_name, username: username, bandname: bandname, bio: bio }
+  const { first_name, last_name, username, bandname, bio, pic_url } = req.body
+  const profileToUpdate = { first_name: first_name, last_name: last_name, username: username, bandname: bandname, bio: bio, pic_url: pic_url }
 
   if (!first_name && !last_name && !username && !bandname && !bio) {
     return res.status(400).json({
