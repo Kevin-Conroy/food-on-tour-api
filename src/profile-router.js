@@ -73,7 +73,7 @@ profileRouter.route("/profile/:profile_id").get((req, res, next) => {
     res.json(serializeProfile(profile)).catch(next);
   });
 }).patch(bodyParser, (req, res, next) => {
-  const { first_name, last_name, username, bandname, bio, pic_url } = req.body
+  const { firstName, lastName, userName, bandname, bio, profilePicture } = req.body
   const profileToUpdate = { first_name: first_name, last_name: last_name, username: username, bandname: bandname, bio: bio, pic_url: pic_url }
 
   if (!first_name && !last_name && !username && !bandname && !bio) {
@@ -91,7 +91,7 @@ profileRouter.route("/profile/:profile_id").get((req, res, next) => {
 		)
 			.then((profile) => {
         console.log("Line 90 in profile router " + JSON.stringify(profile));
-				res.send(profile).status(204).end()
+				res.send.json(serializeProfile(profile)).status(204).end()
 
 			})
 			//.catch(next)
