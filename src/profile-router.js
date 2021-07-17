@@ -74,7 +74,7 @@ profileRouter.route("/profile/:profile_id").get((req, res, next) => {
   });
 }).patch(bodyParser, (req, res, next) => {
   const { firstName, lastName, userName, bandname, bio, profilePicture } = req.body
-  const profileToUpdate = { firstName: firstName, lastName: lastName, userName: userName, bandname: bandname, bio: bio, profilePicture: profilePicture }
+  const profileToUpdate = { first_name: firstName, last_name: lastName, username: userName, bandname: bandname, bio: bio, pic_url: profilePicture }
 
   if (!first_name && !last_name && !username && !bandname && !bio) {
     return res.status(400).json({
