@@ -24,12 +24,6 @@ app.get("/", (req, res) => {
   res.status(200).send("Here is the welcome page");
 });
 
-
-
-
-
-
-
 app.use(function errorHandler(error, req, res, next) {
   let response;
   if (NODE_ENV === "production") {

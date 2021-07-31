@@ -103,7 +103,7 @@ restaurantRouter
     const { name, city, state, url, price, user_id } = req.body;
     console.log(req.body);
     RestaurantsService.getByName(req.app.get("db"), name).then((restaurant) => {
-      console.log("Inside get by name service")
+      console.log("Inside get by name service");
       if (!restaurant) {
         //Add Restaurant
         const newRestaurant = {
@@ -123,7 +123,7 @@ restaurantRouter
           console.log("Caught an error");
         });
       }
-      console.log("at line 125")
+      console.log("at line 125");
       RestaurantsService.getByName(req.app.get("db"), name).then(
         (newRestaurant) => {
           console.log("at line 127");
@@ -172,7 +172,10 @@ restaurantRouter.route("/bucketlist/:profile_id").post((req, res, next) => {
 
   RestaurantsService.insertBucketListItem(req.app.get("db"), newBucketListItem)
     .then((newBucketListItem) => {
-      res.send(`Bucket list added to profile ${newBucketListItem.user_id}`).status(201).end();
+      res
+        .send(`Bucket list added to profile ${newBucketListItem.user_id}`)
+        .status(201)
+        .end();
     })
     .catch(next);
 });

@@ -1,3 +1,5 @@
+const bcrypt = require("bcrypt")
+
 const ProfilesService = {
 
   async getAllProfiles(knex) {
@@ -13,17 +15,18 @@ const ProfilesService = {
       bucketList: bucketList.filter(item => item.user_id === profile.id)
     }));
   },
-
-  
-
+  getByUsername(knex, username) {
+    return knex.from("profiles").select("*").where({ username }).first();
+  },
   getById(knex, id) {
     return knex.from("profiles").select("*").where("id", id).first();
   },
   insertProfile(knex, newProfile) {
     console.log("Profile service test" + JSON.stringify(newProfile));
     try{
+      const password = bcrypt.hashSync(newProfile.password, 2)
     return knex
-      .insert({id: newProfile.id, first_name: newProfile.first_name, last_name: newProfile.last_name, username: newProfile.username, bandname: newProfile.bandname, bio: newProfile.bio, pic_url: newProfile.pic_url })
+      .insert({id: newProfile.id, first_name: newProfile.first_name, last_name: newProfile.last_name, username: newProfile.username, password, bandname: newProfile.bandname, bio: newProfile.bio, pic_url: newProfile.pic_url })
       .into("profiles")
       .returning("*")
       .then((rows) => {
@@ -43,10 +46,12 @@ const ProfilesService = {
       last_name: profileToUpdate.last_name, 
       username: profileToUpdate.username, 
       bandname: profileToUpdate.bandname, 
-      bio: profileToUpdate.bio })
+      bio: profileToUpdate.bio }).returning("*")
       .then((rows) => {
         console.log("Got to the end of updateProfile " + JSON.stringify(rows));
         //return "Done";
+        return rows[0];
+
 
       });
       
