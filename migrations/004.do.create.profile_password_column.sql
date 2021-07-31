@@ -1,3 +1,3 @@
-ALTER TABLE profiles;
+ALTER TABLE profiles
 
 ADD COLUMN IF NOT EXISTS password TEXT;
